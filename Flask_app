@@ -1,0 +1,23 @@
+from flask import Flask
+import requests
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    session_id = get_session('vikumar@congacontracts.com', 'CongaPS22')
+    print("session_id : " + session_id)
+    return session_id
+
+
+# get session
+def get_session(username, password):
+    url = "https://demo.congacontracts.com/Contracts/rest/v2/session?username=" + username + "&password=" + password
+    payload = {}
+    headers = {
+    }
+    response = requests.request("POST", url, headers=headers, data=payload)
+    if response.status_code == 200:
+        return response.text
+    else:
+        return "Error_Occurred"
