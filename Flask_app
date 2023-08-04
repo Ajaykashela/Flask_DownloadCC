@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    session_id = get_session('vikumar@congacontracts.com', 'CongaPS22')
+    session_id = get_session('')
     print("session_id : " + session_id)
     return session_id
 
